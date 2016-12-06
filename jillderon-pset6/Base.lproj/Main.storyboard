@@ -45,12 +45,11 @@
                                     <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ThS-7O-o1O"/>
                                     <segue destination="nj5-Qg-S1g" kind="presentation" id="DNi-lH-qu8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoomMate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKj-DI-m6o">
-                                <rect key="frame" x="25" y="115" width="324" height="76"/>
+                                <rect key="frame" x="29" y="115" width="316" height="87.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="64"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,9 +63,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="signUpDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tZQ-xA-fao"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.74697178723757451" blue="0.55831385046667248" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -91,7 +87,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qqg-Hh-sZj" id="9h9-Iq-LtQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -102,34 +98,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chores" id="uey-fc-6kE">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCj-KO-dzM">
-                            <connections>
-                                <segue destination="E8b-tv-SnM" kind="show" id="g9R-7t-GD6"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCj-KO-dzM"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lW2-nH-PxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1638" y="135"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="eYH-qV-APy">
-            <objects>
-                <viewController id="E8b-tv-SnM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JxG-r9-yfy"/>
-                        <viewControllerLayoutGuide type="bottom" id="iUQ-zX-FHe"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2NO-dX-fey">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c21-cA-WIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2364" y="135"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3hZ-SD-onN">
