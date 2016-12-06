@@ -73,10 +73,6 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="textFieldLoginEmail" destination="Cga-wA-S97" id="yfj-5X-yhv"/>
-                        <outlet property="textFieldLoginPassword" destination="3Ya-74-H2t" id="9S6-JP-BOa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

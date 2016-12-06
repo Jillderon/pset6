@@ -19,18 +19,5 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
-    // MARK: Outlets
-    @IBOutlet weak var textFieldLoginEmail: UITextField!
-    @IBOutlet weak var textFieldLoginPassword: UITextField!
-    
-    
-    @IBAction func loginDidTouch(_ sender: Any) {
-
-    }
-
-    @IBAction func signUpDidTouch(_ sender: Any) {
-    }
-
 }
 
