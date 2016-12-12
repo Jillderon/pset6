@@ -15,6 +15,9 @@
 		A045D34E1DF592D5001E57E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A045D34C1DF592D5001E57E9 /* Main.storyboard */; };
 		A045D3501DF592D5001E57E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A045D34F1DF592D5001E57E9 /* Assets.xcassets */; };
 		A045D3531DF592D5001E57E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A045D3511DF592D5001E57E9 /* LaunchScreen.storyboard */; };
+		A05920731DFAF88F000CB3EE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05920721DFAF88F000CB3EE /* BookViewController.swift */; };
+		A0DB5BD91DF8344500F078F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB5BD81DF8344500F078F4 /* User.swift */; };
+		A0DB5BDB1DF8345400F078F4 /* Chores.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB5BDA1DF8345400F078F4 /* Chores.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,10 @@
 		A045D34F1DF592D5001E57E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A045D3521DF592D5001E57E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A045D3541DF592D5001E57E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A05920721DFAF88F000CB3EE /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		A0DB5BD81DF8344500F078F4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A0DB5BDA1DF8345400F078F4 /* Chores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chores.swift; sourceTree = "<group>"; };
+		A0DB5BDC1DF8393200F078F4 /* jillderon-pset6.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "jillderon-pset6.entitlements"; sourceTree = "<group>"; };
 		CCDC729DB85B901B5CEF3E24 /* Pods-jillderon-pset6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jillderon-pset6.release.xcconfig"; path = "Pods/Target Support Files/Pods-jillderon-pset6/Pods-jillderon-pset6.release.xcconfig"; sourceTree = "<group>"; };
 		D53E62E8F6409B2583F97C60 /* Pods-jillderon-pset6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jillderon-pset6.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jillderon-pset6/Pods-jillderon-pset6.debug.xcconfig"; sourceTree = "<group>"; };
 		FCA8B4AED93F8E554626E19F /* Pods_jillderon_pset6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jillderon_pset6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,10 +81,14 @@
 		A045D3471DF592D4001E57E9 /* jillderon-pset6 */ = {
 			isa = PBXGroup;
 			children = (
+				A0DB5BDC1DF8393200F078F4 /* jillderon-pset6.entitlements */,
 				A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */,
 				A045D3481DF592D5001E57E9 /* AppDelegate.swift */,
 				A02FF0961DF7159500F17137 /* LoginViewController.swift */,
+				A0DB5BD81DF8344500F078F4 /* User.swift */,
+				A0DB5BDA1DF8345400F078F4 /* Chores.swift */,
 				A045D34C1DF592D5001E57E9 /* Main.storyboard */,
+				A05920721DFAF88F000CB3EE /* BookViewController.swift */,
 				A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */,
 				A045D34F1DF592D5001E57E9 /* Assets.xcassets */,
 				A045D3511DF592D5001E57E9 /* LaunchScreen.storyboard */,
@@ -131,6 +142,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = D4DP5K9TQ5;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -219,7 +235,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DB5BD91DF8344500F078F4 /* User.swift in Sources */,
+				A0DB5BDB1DF8345400F078F4 /* Chores.swift in Sources */,
 				A02FF0991DF7165300F17137 /* ChoresTableViewController.swift in Sources */,
+				A05920731DFAF88F000CB3EE /* BookViewController.swift in Sources */,
 				A02FF0971DF7159500F17137 /* LoginViewController.swift in Sources */,
 				A045D3491DF592D5001E57E9 /* AppDelegate.swift in Sources */,
 			);
@@ -345,6 +364,7 @@
 			baseConfigurationReference = D53E62E8F6409B2583F97C60 /* Pods-jillderon-pset6.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "jillderon-pset6/jillderon-pset6.entitlements";
 				DEVELOPMENT_TEAM = D4DP5K9TQ5;
 				INFOPLIST_FILE = "jillderon-pset6/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -359,6 +379,7 @@
 			baseConfigurationReference = CCDC729DB85B901B5CEF3E24 /* Pods-jillderon-pset6.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "jillderon-pset6/jillderon-pset6.entitlements";
 				DEVELOPMENT_TEAM = D4DP5K9TQ5;
 				INFOPLIST_FILE = "jillderon-pset6/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

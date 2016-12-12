@@ -7,19 +7,149 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ChoresTableViewController: UITableViewController {
+    
+//    @IBOutlet var tableView: UITableView!
+    
+    // MARK: Properties
+    var items: [Chores] = []
+    let ref = FIRDatabase.database().reference(withPath: "chores-items")
+    
+    @IBAction func addButtonDidTouch(_ sender: Any) {
+        // Make an alert controller
+        let alert = UIAlertController(title: "Chore",
+                                      message: "Add an chore",
+                                      preferredStyle: .alert)
+        
+        // Adding new chores to the list.
+        let saveAction = UIAlertAction(title: "Save",
+                                       style: .default) { _ in
+            // Get text field from the alert controller.
+            guard let textField = alert.textFields?.first,
+            let text = textField.text else { return }
+                                        
+            // Create a new chore that is not completed.
+            var choreItem = Chores(name: text, completed: false)
+                                        
+            // Create a child reference.
+            let choreItemRef = self.ref.child(text.lowercased())
+                                        
+            // Save data to the database.
+            choreItemRef.setValue(choreItem.toAnyObject())
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        alert.addTextField()
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func signOut(_ sender: Any) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Synchronizing Data to table view after view did load.
+        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+            
+            // Store the latest version of the data in a local variable inside the listener's closure
+            var newItems: [Chores] = []
+            
+            // The listener's closure returns a snapshot of the latest set of data.
+            for item in snapshot.children {
+                let choreItem = Chores(snapshot: item as! FIRDataSnapshot)
+                newItems.append(choreItem)
+            }
+            
+            // Reassign items to the latest version of the data, then reload the table view so it displays
+            // the latest version.
+            self.items = newItems
+            self.tableView.reloadData()
+        })
+        
+
+        
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+       let lastUpdatedSetting = UserDefaults.standard.object(forKey: "lastUpdate") as? NSDate
+        
+        // only upload cells if the view is loaded
+        //
+        if items.count != 0 {
+            var cells = Array<UITableViewCell?>()
+            var shouldUpdate = false
+            if let lastUpdated = lastUpdatedSetting, NSDate().timeIntervalSince(lastUpdated as Date) >= 7 * 24 * 60 * 60 {
+                shouldUpdate = true
+            }
+            
+            // Go through all the cells
+            for index in 0...(items.count-1) {
+                let indexPath = IndexPath(row: index, section: 0)
+                cells.append(tableView.cellForRow(at: indexPath))
+                
+                let choreItem = items[indexPath.row]
+                
+                // Update database online
+                if shouldUpdate {
+                    choreItem.ref?.updateChildValues([
+                        "completed": false
+                    ])
+                    //Record the date you update your label
+                    UserDefaults.standard.set(NSDate(), forKey: "lastUpdate")
+                }else {
+                    return
+                }
+            }
+            
+            // Set all chores that should be updated to false
+            for cell in cells {
+                if shouldUpdate {
+                    toggleCellCheckbox(cell!, isCompleted: false)
+                }else {
+                    return
+                }
+            }
+            self.tableView.reloadData()
+        }
+//        var counter = 0
+//
+//        for item in items {
+//            let lastUpdatedSetting = UserDefaults.standard.object(forKey: "lastUpdate") as? NSDate
+//            
+//            if let lastUpdated = lastUpdatedSetting, NSDate().timeIntervalSince(lastUpdated as Date) >= 7 * 24 * 60 * 60 {
+//                
+//                let choreItem = item
+////                let toggledCompletion = !choreItem.completed
+////                toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+//                choreItem.ref?.updateChildValues([
+//                    "completed": false
+//                    ])
+//                
+//                self.items[counter].completed = false
+//                counter += 1
+//            }
+//            
+//        }
+//        self.tableView.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,14 +157,70 @@ class ChoresTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-}
+        return items.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let choreItem = items[indexPath.row]
+        
+        cell.textLabel?.text = choreItem.name
+        
+        toggleCellCheckbox(cell, isCompleted: choreItem.completed)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let choreItem = items[indexPath.row]
+            choreItem.ref?.removeValue()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        let choreItem = items[indexPath.row]
+        let toggledCompletion = !choreItem.completed
+        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+        choreItem.ref?.updateChildValues([
+            "completed": toggledCompletion
+            ])
+    }
+    
+    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
+        if !isCompleted {
+            cell.accessoryType = .none
+            cell.textLabel?.textColor = UIColor.black
+            cell.detailTextLabel?.textColor = UIColor.black
+        } else {
+            cell.accessoryType = .checkmark
+            cell.textLabel?.textColor = UIColor.gray
+            cell.detailTextLabel?.textColor = UIColor.gray
+        }
+    }
+    
+    // waarschijnlijk klopt er nog niet zoveel van deze functie (?)
+//    func shouldUpdateChores(chore: Chore) {
+//        let lastUpdatedSetting = UserDefaults.standard.object(forKey: "lastUpdate") as? NSDate
+//        
+//        var shouldUpdate = false
+//        if let lastUpdated = lastUpdatedSetting, NSDate().timeIntervalSince(lastUpdated as Date) >= 7 * 24 * 60 * 60 {
+//            shouldUpdate = true
+//        }
+//        
+//        if shouldUpdate {
+//            cell.accessoryType = .none
+//            cell.textLabel?.textColor = UIColor.black
+//            cell.detailTextLabel?.textColor = UIColor.black
+//            //Record the date you update your label
+//            UserDefaults.standard.set(NSDate(), forKey: "lastUpdate")
+//        }else {
+//            return
+//        }
+//        
+//    }
 
 }
