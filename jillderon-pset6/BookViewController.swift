@@ -2,7 +2,8 @@
 //  BookViewController.swift
 //  jillderon-pset6
 //
-//  COMMENT!!
+//  This ViewController display the title and author of the book of the week. 
+//  There is a button that links to the google.books online version.
 //
 //  Created by Jill de Ron on 09-12-16.
 //  Copyright © 2016 Jill de Ron. All rights reserved.
@@ -39,7 +40,9 @@ class BookViewController: UIViewController {
         
         requestHTTPS(title: titles[indexTitle])
         
+        
         if dayNumberOfWeek() == 2 {
+            // A random generator is used to generate an index. This index is used to retrieve a book from the array of possible book titles. 
             indexTitle = Int(arc4random_uniform(15))
             requestHTTPS(title: titles[indexTitle])
         } else {

@@ -1,7 +1,9 @@
 //
 //  LoginViewController.swift
 //  
-//  COMMENT!
+//  LoginViewController handles logging in and signing up. 
+//  It saves the the userdate (email and password) in Firebase.
+//  Userdefaults and staterestoration are used to save the email textfield.
 //
 //  Created by Jill de Ron on 06-12-16.
 //
@@ -22,7 +24,6 @@ class LoginViewController: UIViewController {
     
     // MARK: Actions
         
-    // This code will authenticate the user when they attempt to log in by tapping the Login button.
     @IBAction func loginDidTouch(_ sender: Any) {
         FIRAuth.auth()!.signIn(withEmail: textFieldLoginEmail.text!,
                                password: textFieldLoginPassword.text!) {

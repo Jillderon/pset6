@@ -2,7 +2,9 @@
 //  ChoresTableViewController.swift
 //  jillderon-pset6
 //
-//  COMMENT!!!
+//  A tableview were chores can be added (see plus sign).
+//  All the chores added (and there status) are saved in Firebase.
+//  Chores can be seen (and eddited) by different users.
 //
 //  Created by Jill de Ron on 06-12-16.
 //  Copyright © 2016 Jill de Ron. All rights reserved.
