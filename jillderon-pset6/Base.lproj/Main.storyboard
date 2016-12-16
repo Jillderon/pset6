@@ -145,17 +145,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" bounces="NO" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3T-Uh-9qC">
-                                <rect key="frame" x="16" y="0.0" width="343" height="262"/>
-                                <color key="backgroundColor" red="1" green="0.74697178720000001" blue="0.55831385050000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
-                                </accessibility>
-                                <string key="text">Make your happy home an educated and clean place with this app! You can add weekly chores that need to be done. The chores get refreshed on monday every week, and every monday there will be a new (free) book available for you and your roommates to read and discuss. Happy cleaning and reading! </string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gl4-tI-eUf">
                                 <rect key="frame" x="156" y="554" width="63" height="43"/>
                                 <color key="backgroundColor" red="0.99160850050000005" green="0.58425903320000006" blue="0.42443481090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -167,14 +156,26 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="ZaD-IW-nGi"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" bounces="NO" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3T-Uh-9qC">
+                                <rect key="frame" x="16" y="111" width="343" height="262"/>
+                                <color key="backgroundColor" red="1" green="0.74697178720000001" blue="0.55831385050000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <string key="text">Make your happy home an educated and clean place with this app! You can add weekly chores that need to be done. The chores get refreshed on monday every week, and every monday there will be a new (free) book available for you and your roommates to read and discuss. Happy cleaning and reading! </string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.74509803921568629" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="leading" secondItem="mEG-ra-aQ8" secondAttribute="leadingMargin" id="UIW-ij-cWh"/>
+                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="leading" secondItem="mEG-ra-aQ8" secondAttribute="leadingMargin" id="55U-hZ-yoI"/>
+                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="trailing" secondItem="mEG-ra-aQ8" secondAttribute="trailingMargin" id="Cdh-uw-5EG"/>
                             <constraint firstItem="gl4-tI-eUf" firstAttribute="centerX" secondItem="mEG-ra-aQ8" secondAttribute="centerX" id="Vv1-1P-m5S"/>
+                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="top" secondItem="YaR-cP-9us" secondAttribute="bottom" constant="91" id="cUM-E3-qxE"/>
+                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="centerX" secondItem="mEG-ra-aQ8" secondAttribute="centerX" id="iYO-uV-rUD"/>
                             <constraint firstItem="Boo-AQ-awY" firstAttribute="top" secondItem="gl4-tI-eUf" secondAttribute="bottom" constant="26" id="lXV-pz-wg4"/>
-                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="trailing" secondItem="mEG-ra-aQ8" secondAttribute="trailingMargin" id="pm6-Au-IT7"/>
-                            <constraint firstItem="S3T-Uh-9qC" firstAttribute="top" secondItem="mEG-ra-aQ8" secondAttribute="topMargin" id="xBw-Mo-28M"/>
                         </constraints>
                     </view>
                 </viewController>

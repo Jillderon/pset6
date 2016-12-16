@@ -1,6 +1,7 @@
 //
 //  LoginViewController.swift
 //  
+//  COMMENT!
 //
 //  Created by Jill de Ron on 06-12-16.
 //
@@ -19,18 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var textFieldLoginEmail: UITextField!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                self.performSegue(withIdentifier: "toChores", sender: nil)
-            }
-        }
-        
-        textFieldLoginPassword.text = ""
-    }
-    
+    // MARK: Actions
         
     // This code will authenticate the user when they attempt to log in by tapping the Login button.
     @IBAction func loginDidTouch(_ sender: Any) {
@@ -98,6 +88,19 @@ class LoginViewController: UIViewController {
         present(alertLoginController, animated: true, completion: nil)
     }
 
+    // MARK: Functions
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "toChores", sender: nil)
+            }
+        }
+        
+        textFieldLoginPassword.text = ""
+    }
     
     // State restoration. Only saving email and not password, because of security reasons.
     // Cited from: https://www.raywenderlich.com/117471/state-restoration-tutorial

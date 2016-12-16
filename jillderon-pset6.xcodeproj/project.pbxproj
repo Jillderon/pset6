@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CBEB03C7E21A936402DABE8 /* Pods_jillderon_pset6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA8B4AED93F8E554626E19F /* Pods_jillderon_pset6.framework */; };
 		A02AB76B1E0420DA00D09FCC /* review.md in Sources */ = {isa = PBXBuildFile; fileRef = A02AB76A1E0420DA00D09FCC /* review.md */; };
+		A02AB76D1E04769800D09FCC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A02AB76C1E04769800D09FCC /* README.md */; };
 		A02FF0931DF6DCA800F17137 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */; };
 		A02FF0971DF7159500F17137 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02FF0961DF7159500F17137 /* LoginViewController.swift */; };
 		A02FF0991DF7165300F17137 /* ChoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		A02AB76A1E0420DA00D09FCC /* review.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = review.md; sourceTree = "<group>"; };
+		A02AB76C1E04769800D09FCC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A02FF0961DF7159500F17137 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoresTableViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				A02AB7661E04151200D09FCC /* Other */,
 				A045D34F1DF592D5001E57E9 /* Assets.xcassets */,
 				A02AB76A1E0420DA00D09FCC /* review.md */,
+				A02AB76C1E04769800D09FCC /* README.md */,
 			);
 			path = "jillderon-pset6";
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				A05920731DFAF88F000CB3EE /* BookViewController.swift in Sources */,
 				A02AB76B1E0420DA00D09FCC /* review.md in Sources */,
 				A02FF0971DF7159500F17137 /* LoginViewController.swift in Sources */,
+				A02AB76D1E04769800D09FCC /* README.md in Sources */,
 				A045D3491DF592D5001E57E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
