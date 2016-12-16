@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CBEB03C7E21A936402DABE8 /* Pods_jillderon_pset6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA8B4AED93F8E554626E19F /* Pods_jillderon_pset6.framework */; };
+		A02AB76B1E0420DA00D09FCC /* review.md in Sources */ = {isa = PBXBuildFile; fileRef = A02AB76A1E0420DA00D09FCC /* review.md */; };
 		A02FF0931DF6DCA800F17137 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */; };
 		A02FF0971DF7159500F17137 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02FF0961DF7159500F17137 /* LoginViewController.swift */; };
 		A02FF0991DF7165300F17137 /* ChoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A02AB76A1E0420DA00D09FCC /* review.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = review.md; sourceTree = "<group>"; };
 		A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A02FF0961DF7159500F17137 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoresTableViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,45 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A02AB7651E0414E100D09FCC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A02FF0961DF7159500F17137 /* LoginViewController.swift */,
+				A05920721DFAF88F000CB3EE /* BookViewController.swift */,
+				A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A02AB7661E04151200D09FCC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */,
+				A045D3541DF592D5001E57E9 /* Info.plist */,
+				A045D3481DF592D5001E57E9 /* AppDelegate.swift */,
+				A0DB5BDC1DF8393200F078F4 /* jillderon-pset6.entitlements */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		A02AB7671E04154B00D09FCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB5BDA1DF8345400F078F4 /* Chores.swift */,
+				A0DB5BD81DF8344500F078F4 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A02AB7691E0415B000D09FCC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A045D3511DF592D5001E57E9 /* LaunchScreen.storyboard */,
+				A045D34C1DF592D5001E57E9 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		A045D33C1DF592D4001E57E9 = {
 			isa = PBXGroup;
 			children = (
@@ -81,18 +122,12 @@
 		A045D3471DF592D4001E57E9 /* jillderon-pset6 */ = {
 			isa = PBXGroup;
 			children = (
-				A0DB5BDC1DF8393200F078F4 /* jillderon-pset6.entitlements */,
-				A02FF0921DF6DCA800F17137 /* GoogleService-Info.plist */,
-				A045D3481DF592D5001E57E9 /* AppDelegate.swift */,
-				A02FF0961DF7159500F17137 /* LoginViewController.swift */,
-				A0DB5BD81DF8344500F078F4 /* User.swift */,
-				A0DB5BDA1DF8345400F078F4 /* Chores.swift */,
-				A045D34C1DF592D5001E57E9 /* Main.storyboard */,
-				A05920721DFAF88F000CB3EE /* BookViewController.swift */,
-				A02FF0981DF7165300F17137 /* ChoresTableViewController.swift */,
+				A02AB7691E0415B000D09FCC /* Storyboards */,
+				A02AB7671E04154B00D09FCC /* Models */,
+				A02AB7651E0414E100D09FCC /* ViewControllers */,
+				A02AB7661E04151200D09FCC /* Other */,
 				A045D34F1DF592D5001E57E9 /* Assets.xcassets */,
-				A045D3511DF592D5001E57E9 /* LaunchScreen.storyboard */,
-				A045D3541DF592D5001E57E9 /* Info.plist */,
+				A02AB76A1E0420DA00D09FCC /* review.md */,
 			);
 			path = "jillderon-pset6";
 			sourceTree = "<group>";
@@ -135,7 +170,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Jill de Ron";
 				TargetAttributes = {
 					A045D3441DF592D4001E57E9 = {
@@ -239,6 +274,7 @@
 				A0DB5BDB1DF8345400F078F4 /* Chores.swift in Sources */,
 				A02FF0991DF7165300F17137 /* ChoresTableViewController.swift in Sources */,
 				A05920731DFAF88F000CB3EE /* BookViewController.swift in Sources */,
+				A02AB76B1E0420DA00D09FCC /* review.md in Sources */,
 				A02FF0971DF7159500F17137 /* LoginViewController.swift in Sources */,
 				A045D3491DF592D5001E57E9 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +320,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -334,6 +371,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

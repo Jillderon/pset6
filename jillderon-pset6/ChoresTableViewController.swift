@@ -5,14 +5,13 @@
 //  Created by Jill de Ron on 06-12-16.
 //  Copyright © 2016 Jill de Ron. All rights reserved.
 //
+// 
 
 import UIKit
 import Firebase
 import FirebaseAuth
 
 class ChoresTableViewController: UITableViewController {
-    
-//    @IBOutlet var tableView: UITableView!
     
     // MARK: Properties
     var items: [Chores] = []
@@ -21,7 +20,7 @@ class ChoresTableViewController: UITableViewController {
     @IBAction func addButtonDidTouch(_ sender: Any) {
         // Make an alert controller
         let alert = UIAlertController(title: "Chore",
-                                      message: "Add an chore",
+                                      message: "Add a chore",
                                       preferredStyle: .alert)
         
         // Adding new chores to the list.
@@ -31,14 +30,19 @@ class ChoresTableViewController: UITableViewController {
             guard let textField = alert.textFields?.first,
             let text = textField.text else { return }
                                         
-            // Create a new chore that is not completed.
-            var choreItem = Chores(name: text, completed: false)
-                                        
-            // Create a child reference.
-            let choreItemRef = self.ref.child(text.lowercased())
-                                        
-            // Save data to the database.
-            choreItemRef.setValue(choreItem.toAnyObject())
+            // Create a new chore that is not completed, if user fills in textfield.
+            if textField.text == "" {
+               self.alertUser()
+            } else {
+                let choreItem = Chores(name: text, completed: false)
+                
+                // Create a child reference.
+                let choreItemRef = self.ref.child(text.lowercased())
+                
+                // Save data to the database.
+                choreItemRef.setValue(choreItem.toAnyObject())
+            }
+                                    
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -52,6 +56,13 @@ class ChoresTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func alertUser() {
+        let alertController = UIAlertController(title: "No chore", message: "Fill in a chore", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     @IBAction func signOut(_ sender: Any) {
         let firebaseAuth = FIRAuth.auth()
@@ -83,20 +94,18 @@ class ChoresTableViewController: UITableViewController {
             self.items = newItems
             self.tableView.reloadData()
         })
-        
 
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       let lastUpdatedSetting = UserDefaults.standard.object(forKey: "lastUpdate") as? NSDate
         
         // only upload cells if the view is loaded
-        //
         if items.count != 0 {
             var cells = Array<UITableViewCell?>()
+            
             var shouldUpdate = false
-            if let lastUpdated = lastUpdatedSetting, NSDate().timeIntervalSince(lastUpdated as Date) >= 7 * 24 * 60 * 60 {
+            if dayNumberOfWeek() == 2 {
                 shouldUpdate = true
             }
             
@@ -112,9 +121,7 @@ class ChoresTableViewController: UITableViewController {
                     choreItem.ref?.updateChildValues([
                         "completed": false
                     ])
-                    //Record the date you update your label
-                    UserDefaults.standard.set(NSDate(), forKey: "lastUpdate")
-                }else {
+                } else {
                     return
                 }
             }
@@ -129,26 +136,10 @@ class ChoresTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         }
-//        var counter = 0
-//
-//        for item in items {
-//            let lastUpdatedSetting = UserDefaults.standard.object(forKey: "lastUpdate") as? NSDate
-//            
-//            if let lastUpdated = lastUpdatedSetting, NSDate().timeIntervalSince(lastUpdated as Date) >= 7 * 24 * 60 * 60 {
-//                
-//                let choreItem = item
-////                let toggledCompletion = !choreItem.completed
-////                toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//                choreItem.ref?.updateChildValues([
-//                    "completed": false
-//                    ])
-//                
-//                self.items[counter].completed = false
-//                counter += 1
-//            }
-//            
-//        }
-//        self.tableView.reloadData()
+    }
+
+    func dayNumberOfWeek() -> Int? {
+        return Calendar.current.dateComponents([.weekday], from: NSDate() as Date).weekday
     }
     
     override func didReceiveMemoryWarning() {
@@ -201,26 +192,5 @@ class ChoresTableViewController: UITableViewController {
             cell.detailTextLabel?.textColor = UIColor.gray
         }
     }
-    
-    // waarschijnlijk klopt er nog niet zoveel van deze functie (?)
-//    func shouldUpdateChores(chore: Chore) {
-//        let lastUpdatedSetting = UserDefaults.standard.object(forKey: "lastUpdate") as? NSDate
-//        
-//        var shouldUpdate = false
-//        if let lastUpdated = lastUpdatedSetting, NSDate().timeIntervalSince(lastUpdated as Date) >= 7 * 24 * 60 * 60 {
-//            shouldUpdate = true
-//        }
-//        
-//        if shouldUpdate {
-//            cell.accessoryType = .none
-//            cell.textLabel?.textColor = UIColor.black
-//            cell.detailTextLabel?.textColor = UIColor.black
-//            //Record the date you update your label
-//            UserDefaults.standard.set(NSDate(), forKey: "lastUpdate")
-//        }else {
-//            return
-//        }
-//        
-//    }
 
 }
