@@ -12,6 +12,9 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
+    // MARK: User defaults
+    let defaults = UserDefaults.standard
+    
     // MARK: Outlets
     @IBOutlet weak var textFieldLoginEmail: UITextField!
     @IBOutlet weak var textFieldLoginPassword: UITextField!
@@ -24,6 +27,8 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "toChores", sender: nil)
             }
         }
+        
+        textFieldLoginPassword.text = ""
     }
     
         
@@ -35,6 +40,10 @@ class LoginViewController: UIViewController {
             if error != nil {
                 self.alertUser(title: "Login Error", message: "Enter valid password and/or email")
             }
+            else {
+                self.defaults.set(self.textFieldLoginEmail.text, forKey: "email")
+            }
+                                
         }
     
     }
@@ -103,6 +112,11 @@ class LoginViewController: UIViewController {
     override func decodeRestorableState(with coder: NSCoder) {
         textFieldLoginEmail.text = coder.decodeObject(forKey: "email") as! String?
         super.decodeRestorableState(with: coder)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        textFieldLoginEmail.text = self.defaults.string(forKey: "email")
+
     }
     
 }

@@ -29,7 +29,7 @@ class ChoresTableViewController: UITableViewController {
             // Get text field from the alert controller.
             guard let textField = alert.textFields?.first,
             let text = textField.text else { return }
-                                        
+                                                    
             // Create a new chore that is not completed, if user fills in textfield.
             if textField.text == "" {
                self.alertUser()
@@ -41,7 +41,9 @@ class ChoresTableViewController: UITableViewController {
                 
                 // Save data to the database.
                 choreItemRef.setValue(choreItem.toAnyObject())
+                
             }
+            
                                     
         }
         
